@@ -16,11 +16,8 @@ func createProduct(db *gorm.DB) HandlerFunc {
 			return c.JSON(http.StatusBadRequest, err.Error())
 		}
 
-		if product.Name == "" {
+		if product.Name == "" && product.Price == 0 {
 			return c.JSON(http.StatusBadRequest, "Name is required")
-		}
-		if product.Price == 0 {
-			return c.JSON(http.StatusBadRequest, "Price is required")
 		}
 		if product.CategoryID != 0 {
 			var category Category

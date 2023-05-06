@@ -6,6 +6,10 @@ import (
 	"github.com/labstack/echo/v4/middleware"
 )
 
+const productsWithIdEndpoint = "/products/:id"
+const categoriesWithIdEndpoint = "categoriesWithIdEndpoint"
+const cartWithIdEndpoint = "cartWithIdEndpoint"
+
 func main() {
 	db, err := InitDB()
 	if err != nil {
@@ -22,23 +26,23 @@ func main() {
 	//routes for products
 	e.POST("/products", RouteHandler(createProduct(db)))
 	e.GET("/products", RouteHandler(getAllProducts(db)))
-	e.GET("/products/:id",RouteHandler(getProductById(db)))
-	e.PUT("/products/:id",RouteHandler(updateProduct(db)))
-	e.DELETE("/products/:id",RouteHandler(deleteProduct(db)))
+	e.GET(productsWithIdEndpoint,RouteHandler(getProductById(db)))
+	e.PUT(productsWithIdEndpoint,RouteHandler(updateProduct(db)))
+	e.DELETE(productsWithIdEndpoint,RouteHandler(deleteProduct(db)))
 
 	// //routes for categories
 	e.POST("/categories", RouteHandler(createCategory(db)))
 	e.GET("/categories", RouteHandler(getAllCategories(db)))
-	e.GET("/categories/:id",RouteHandler(getCategoryById(db)))
-	e.PUT("/categories/:id",RouteHandler(updateCategory(db)))
-	e.DELETE("/categories/:id",RouteHandler(deleteCategory(db)))
+	e.GET(categoriesWithIdEndpoint,RouteHandler(getCategoryById(db)))
+	e.PUT(categoriesWithIdEndpoint,RouteHandler(updateCategory(db)))
+	e.DELETE(categoriesWithIdEndpoint,RouteHandler(deleteCategory(db)))
 
 	//routes for cart
 	e.POST("/cart", RouteHandler(addCartItem(db)))
 	e.GET("/cart", RouteHandler(getCartItems(db)))
-	e.GET("/cart/:id", RouteHandler(getCartItemById(db)))
-	e.PUT("/cart/:id",RouteHandler(updateCartItem(db)))
-	e.DELETE("/cart/:id",RouteHandler(deleteCartItem(db)))
+	e.GET(cartWithIdEndpoint, RouteHandler(getCartItemById(db)))
+	e.PUT(cartWithIdEndpoint,RouteHandler(updateCartItem(db)))
+	e.DELETE(cartWithIdEndpoint,RouteHandler(deleteCartItem(db)))
 
 
 	//payments routes

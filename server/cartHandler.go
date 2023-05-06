@@ -8,6 +8,7 @@ import (
 	"fmt"
 )
 
+const productCategory = "Product.Category"
 
 func addCartItem(db *gorm.DB) HandlerFunc {
 	return func(c echo.Context) error {
@@ -37,7 +38,7 @@ func updateCartItem(db *gorm.DB) HandlerFunc {
 		id := c.Param("id")
 
 		var cartItem CartItem
-		if err := db.Preload("Product.Category").First(&cartItem, id).Error; err != nil {
+		if err := db.Preload(productCategory).First(&cartItem, id).Error; err != nil {
             return c.JSON(http.StatusBadRequest, "Cart item not found")
         }
 		
@@ -58,7 +59,7 @@ func getCartItemById(db *gorm.DB) HandlerFunc {
 	return func(c echo.Context) error {
 		id := c.Param("id")
 		var item CartItem
-		if err := db.Preload("Product.Category").Find(&item,id).Error; err != nil {
+		if err := db.Preload(productCategory).Find(&item,id).Error; err != nil {
 			return c.JSON(http.StatusInternalServerError, err.Error())
 		}
 		
