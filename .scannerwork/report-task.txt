@@ -1,7 +1,7 @@
 organization=wrojek0
 projectKey=wrojek0_shop-server-backend
 serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.40668
+serverVersion=8.0.0.40746
 dashboardUrl=https://sonarcloud.io/dashboard?id=wrojek0_shop-server-backend
-ceTaskId=AYfxTsjSVjupo9Sdz2SD
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYfxTsjSVjupo9Sdz2SD
+ceTaskId=AYgBT2muWrasIp79ra_i
+ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AYgBT2muWrasIp79ra_i
