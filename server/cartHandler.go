@@ -70,7 +70,7 @@ func getCartItemById(db *gorm.DB) HandlerFunc {
 func getCartItems(db *gorm.DB) HandlerFunc {
 	return func(c echo.Context) error {
 		var items []CartItem
-		if err := db.Preload("Product.Category").Find(&items).Error; err != nil {
+		if err := db.Preload(productCategory).Find(&items).Error; err != nil {
 			return c.JSON(http.StatusInternalServerError, err.Error())
 		}
 		

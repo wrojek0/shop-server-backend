@@ -20,9 +20,12 @@ func InitDB() (*gorm.DB, error) {
 	if err != nil {
 		return nil, err
 	}
-	// db.Exec("DROP TABLE IF EXISTS products")
-	// db.Exec("DROP TABLE IF EXISTS categories")
+
 	db.Exec("DROP TABLE IF EXISTS cart_items")
-	db.AutoMigrate(&Product{}, &Category{},&CartItem{})
+	
+	autoMigrateErr := db.AutoMigrate(&Product{}, &Category{}, &CartItem{})
+	if autoMigrateErr != nil {
+		return nil, autoMigrateErr
+	}
 	return db, nil
 }
