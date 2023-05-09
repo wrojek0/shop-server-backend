@@ -1,1 +1,1 @@
-# golang server
+# golang server backend
